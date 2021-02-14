@@ -11,4 +11,18 @@ test('create an employee object ', () => {
 
 });
 
+test('gets employee\'s name value', () => {
+    const employee = new Employee('Sheila o\'Hare', 'sheila.esther@fauxmail.com');
+
+    expect(employee.getName()).toBe(expect.any(Array));
+
+
+});
+
+test('gets employee\'s ID', () => {
+    const employee = new Employee('Sheila o\'Hare', 'sheila.esther@fauxmail.com');
+    expect(employee.getId()).toBe(expect.any(String));
+
+});
+
 //lib\_mocks_\Employee.js
