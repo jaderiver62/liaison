@@ -25,4 +25,16 @@ test('gets employee\'s ID', () => {
 
 });
 
+test('gets employee\'s ID', () => {
+    const employee = new Employee('Sheila o\'Hare', 'sheila.esther@fauxmail.com');
+    expect(employee.getEmail()).toBe(expect.any(Number));
+
+});
+
+test('gets employee\'s ID', () => {
+    const employee = new Employee('Sheila o\'Hare', 'sheila.esther@fauxmail.com');
+    expect(employee.getRole()).toBe(expect.any(Number));
+
+});
+
 //lib\_mocks_\Employee.js
