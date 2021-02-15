@@ -21,7 +21,7 @@ expect(engineer.getRole()).toEqual(expect.stringContaining('Engineer'));
 
 });
 
-test("get engineer's office number ",()=>{
+test("get engineer's GitHub username ",()=>{
     const engineer = new Engineer('Shirelle Monae', 'shirelle.m@fauxmail.com', 'R34', 'smonae45');
 expect(engineer.getGitHub()).toEqual(expect.stringContaining('smonae45'));
 });
