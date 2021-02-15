@@ -17,11 +17,11 @@ test("get intern's role ", () => {
     const intern = new Intern('Shirelle Monae', 'shirelle.m@fauxmail.com', 'R34', 'City College');
 
 
-    expect(intern.getRole()).toEqual(expect.stringContaining('City College'));
+    expect(intern.getRole()).toEqual(expect.stringContaining('Intern'));
 
 });
 
 test("get intern's school ", () => {
     const intern = new Intern('Shirelle Monae', 'shirelle.m@fauxmail.com', 'R34', 'City College');
-    expect(intern.getGitHub()).toEqual(expect.stringContaining('City College'));
+    expect(intern.getSchool()).toEqual(expect.stringContaining('City College'));
 });
