@@ -3,7 +3,7 @@ const inquirer = require('inquirer');
 const generatePage = require('./src/page-template');
 inquirer.registerPrompt("loop", require("inquirer-loop")(inquirer));
 var validator = require("email-validator");
-
+var employeeArray = [];
 const questions = [{
         type: 'input',
         name: 'headLine',
@@ -67,14 +67,19 @@ const questions = [{
         message: 'Enter an email for the Manager: ',
         validate: emailInput => {
             if (validator.validate(emailInput)) {
-                getEmployees();
+
                 return true;
             } else {
                 console.log('Please enter a valid contact e-mail!');
                 return false;
             }
         }
-    },
+    }, {
+        type: 'confirm',
+        name: 'createEmployees',
+        message: 'Do you want to add employees?'
+
+    }
 
 
 ];
@@ -88,16 +93,18 @@ var employeeTypePrompt = {
 
 function getEmployees() {
     inquirer.prompt(employeeTypePrompt).then((answers) => {
-        if (answers.addEmplyee === 'yes') {
+        var isAdding = answers.addEmplyee;
+        if ((isAdding) === 'yes') {
             console.log(answers);
-        }
-        return true;
+            getEmployees();
+        } else { console.log("Meowsss"); }
+
     })
 
 }
 
 function inititialize() {
-    inquirer.prompt(questions).then((answers) => {
+    inquirer.prompt(questions).then(getEmployees(answers)).then((answers) => {
         const newIndex = generatePage(answers);
         return writeToFile('./index.html', newIndex).then(writeFileResponse => {
                 console.log(writeFileResponse);
