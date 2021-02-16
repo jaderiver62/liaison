@@ -43,7 +43,7 @@ const questions = [{
     {
         type: 'input',
         name: 'managerEmail',
-        message: 'Enter this project\'s site name (Required) ',
+        message: 'Enter this Manager\'s email (Required) ',
         validate: emailInput => {
             if (validator.validate(emailInput)) {
                 return true;
@@ -57,121 +57,57 @@ const questions = [{
         type: 'input',
         name: 'managerNumber',
         message: 'Please enter an office phone number for the Manager: ',
-        validate: input => {
-            return phoneNumberValidator(input);
-        }
-    },
-    {
-        type: 'confirm',
-        name: 'tableOfContents',
-        message: 'Would you like to include a Table of Contents? ',
-    },
-    {
-        type: 'input',
-        name: 'installation',
-        message: 'Please provide any installation information you wish to include: '
-    },
-    {
-        type: 'list',
-        name: 'license',
-        message: 'Choose a license for this project: ',
-        choices: ['GNU AGPLv3', 'GNU GPLv3', 'GNU LGPLv3', 'Mozilla Public License 2.0', 'Apache License 2.0', 'MIT License', 'Boost Software License 1.0', 'The Unlicense']
-
-    },
-    {
-        type: 'checkbox',
-        name: 'languages',
-        message: 'What languages did you write this project with? (Check all that apply)',
-        choices: ['JavaScript', 'HTML', 'CSS', 'ES6', 'jQuery', 'Bootstrap', 'Node']
-    },
-    {
-        type: 'input',
-        name: 'usage',
-        message: 'Provide instructions and examples for this project\s use: ',
-
-    },
-    {
-        type: 'input',
-        name: 'imageUrl',
-        message: 'Add an image/screenshot URL to help with usage: '
-    },
-    {
-        type: 'input',
-        name: 'contactName',
-        message: 'Please enter a contact name for questions users have about your project: ',
-        validate: nameInput => {
-            if (nameInput) {
-                return true;
-            } else {
-                console.log('You need to enter a contact name!');
-                return false;
-            }
+        validate: (input) => {
+            return phoneNumberValidator(input) ? true : false;
         }
     },
     {
         type: 'input',
-        name: 'email',
-        message: 'Enter a valid email for the contact name: ',
+        name: 'managerEmail',
+        message: 'Enter an email for the Manager: ',
         validate: emailInput => {
             if (validator.validate(emailInput)) {
+                getEmployees();
                 return true;
             } else {
-                console.log('You need to enter a valid contact e-mail!');
+                console.log('Please enter a valid contact e-mail!');
                 return false;
             }
         }
     },
-    {
-        type: 'input',
-        name: 'githubLink',
-        message: 'Enter a GitHub link for the project\'s contact: ',
-        validate: nameInput => {
-            if (nameInput) {
-                return true;
-            } else {
-                console.log('Please enter a GitHub link!');
-                return false;
-            }
-        }
-    },
-    {
-        type: 'input',
-        name: 'test',
-        message: 'Please provide any testing information you wish to include: '
-    },
-    {
-        type: 'loop',
-        name: 'credits',
-        message: 'Add a contributor? ',
-        questions: [{
-                type: "input",
-                name: "contributor",
-                message: "Enter the contributor's name: ",
-            },
-            {
-                type: "input",
-                name: "contributorLink",
-                message: "Enter the contributor's link: ",
-            },
-        ],
-    },
+
+
 ];
 
+var employeeTypePrompt = {
+    type: 'list',
+    name: 'addEmplyee',
+    message: 'Would you like to add an employee?',
+    choices: ['yes', 'no'],
+};
 
+function getEmployees() {
+    inquirer.prompt(employeeTypePrompt).then((answers) => {
+        if (answers.addEmplyee === 'yes') {
+            console.log(answers);
+        }
+        return true;
+    })
+
+}
 
 function inititialize() {
     inquirer.prompt(questions).then((answers) => {
-            const newIndex = generatePage(answers);
-            return writeToFile('./index.html', newIndex);
-        }).then(writeFileResponse => {
-            console.log(writeFileResponse);
-        })
-        .catch(err => {
-            console.log(err);
+        const newIndex = generatePage(answers);
+        return writeToFile('./index.html', newIndex).then(writeFileResponse => {
+                console.log(writeFileResponse);
+            })
+            .catch(err => {
+                console.log(err);
 
-        });
+            });
+    });
 }
-
 // writing files
 
 function writeToFile(fileName, data) {
