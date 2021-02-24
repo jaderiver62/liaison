@@ -1,7 +1,7 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
 const generatePage = require('./src/page-template');
-var phoneNumberValidator = require('fix-phone');
+var fix = require('fix-phone');
 inquirer.registerPrompt("loop", require("inquirer-loop")(inquirer));
 var validator = require("email-validator");
 
@@ -58,8 +58,8 @@ const questions = [{
         type: 'input',
         name: 'managerNumber',
         message: 'Please enter an office phone number for the Manager: ',
-        validate: (input) => {
-            return phoneNumberValidator(input) ? true : false;
+        validate: (number) => {
+            return (number.length >= 10) && (isNumeric(number)) ? true : false;
         }
     },
     {
@@ -81,27 +81,24 @@ const questions = [{
         name: 'addEmployee',
         message: 'Add an Employee? ',
         questions: [{
-            type: "checkbox",
+            type: "list",
             name: "employeeType",
-            message: "Enter the employee type: ",
-            choices: ['Engineer', 'Intern']
+            message: "Would you like to add an Engineer or an Intern? ",
+            choices: ["Engineer", "Intern"]
         },
         {
             type: "input",
             name: "engineerGitHub",
-            message: "What is your GitHub username? ",
-            when:  function(answers) {
-                return answers.employeeType === 'Engineer';
-            },           
+            message: "What is the engineer's GitHub username? ",
+            when: ({employeeType})=> employeeType === "Engineer",
         },
         {
             type: "input",
             name: "internSchool",
-            message: "What is your school? ",
-            when:  function(answers) {
-                return answers.employeeType === 'Intern';
-            }, 
-        },{
+            message: "What is the Intern's school name? ",
+            when: ({employeeType})=> employeeType === "Intern"
+        },
+        {
             type: 'input',
             name: 'employeeName',
             message: 'What is the Employee\'s name (Required)?',
@@ -138,20 +135,7 @@ const questions = [{
                 }
             }
         },
-        {
-            type: 'input',
-            name: 'managerEmail',
-            message: 'Enter an email for the Employee: ',
-            validate: emailInput => {
-                if (validator.validate(emailInput)) {
     
-                    return true;
-                } else {
-                    console.log('Please enter a valid contact e-mail!');
-                    return false;
-                }
-            }
-        }, 
        ]
     },
 ];
@@ -205,8 +189,29 @@ const copyToFile = () => {
 };
 
 
+function isNumeric(string) {
+    if (typeof string != "string") return false
+    return !isNaN(string) &&
+        !isNaN(parseFloat(string))
+}
 
 inititialize();
 
 
 module.exports = { writeToFile, copyToFile };
+
+
+// var result = '',
+// end = number.substr(-7),
+// end1 = end.substr(0, 3),
+
+// end2 = end.substr(3),
+// mid = number.substr(-10, 3),
+// pre = '';
+// if (length > 10) {
+// pre = number.substr(0, (l - 10));
+// }
+// result += pre + ' (' + mid + ')-' + end1 + '-' + end2;
+
+// }
+// return result;
