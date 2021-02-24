@@ -8,7 +8,7 @@ var validator = require("email-validator");
 const questions = [{
         type: 'input',
         name: 'headLine',
-        message: 'Pleases enter a header - can be your team name or a heading of your choice! ',
+        message: 'Please enter a header - can be your team name or a heading of your choice! ',
         validate: teamInput => {
             if (teamInput) {
                 return true;
@@ -33,8 +33,8 @@ const questions = [{
         type: 'input',
         name: 'managerId',
         message: 'Enter the Manager\'s ID Number: (Required) ',
-        validate: linkInput => {
-            if (linkInput) {
+        validate: idInput => {
+            if (idInput) {
                 return true;
             }
             console.log('Please enter an ID number for the Manager!');
@@ -101,7 +101,57 @@ const questions = [{
             when:  function(answers) {
                 return answers.employeeType === 'Intern';
             }, 
+        },{
+            type: 'input',
+            name: 'employeeName',
+            message: 'What is the Employee\'s name (Required)?',
+            validate: employeeName => {
+                if (employeeName) {
+                    return true;
+                }
+                console.log('Please enter a name! ');
+                return false;
+            }
         },
+        {
+            type: 'input',
+            name: 'employeeId',
+            message: 'Enter the Employee\'s ID Number: (Required) ',
+            validate: idInput => {
+                if (idInput) {
+                    return true;
+                }
+                console.log('Please enter an ID number for the Employee!');
+                return false;
+            }
+        },
+        {
+            type: 'input',
+            name: 'employeeEmail',
+            message: 'Enter this Employee\'s email (Required) ',
+            validate: emailInput => {
+                if (validator.validate(emailInput)) {
+                    return true;
+                } else {
+                    console.log('Please enter a valid e-mail!');
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'managerEmail',
+            message: 'Enter an email for the Employee: ',
+            validate: emailInput => {
+                if (validator.validate(emailInput)) {
+    
+                    return true;
+                } else {
+                    console.log('Please enter a valid contact e-mail!');
+                    return false;
+                }
+            }
+        }, 
        ]
     },
 ];
