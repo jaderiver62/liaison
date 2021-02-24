@@ -135,7 +135,6 @@ const questions = [{
                 }
             }
         },
-    
        ]
     },
 ];
@@ -154,7 +153,7 @@ function inititialize() {
             });
     });
 }
-// writing files
+
 
 function writeToFile(fileName, data) {
     return new Promise((resolve, reject) => {
