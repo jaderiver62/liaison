@@ -1,9 +1,10 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
 const generatePage = require('./src/page-template');
+var phoneNumberValidator = require('fix-phone');
 inquirer.registerPrompt("loop", require("inquirer-loop")(inquirer));
 var validator = require("email-validator");
-var employeeArray = [];
+
 const questions = [{
         type: 'input',
         name: 'headLine',
@@ -74,37 +75,45 @@ const questions = [{
                 return false;
             }
         }
-    }, {
-        type: 'confirm',
-        name: 'createEmployees',
-        message: 'Do you want to add employees?'
-
-    }
-
-
+    }, 
+    {
+        type: 'loop',
+        name: 'addEmployee',
+        message: 'Add an Employee? ',
+        questions: [{
+            type: "checkbox",
+            name: "employeeType",
+            message: "Enter the employee type: ",
+            choices: ['Engineer', 'Intern']
+        },
+        {
+            type: "input",
+            name: "engineerGitHub",
+            message: "What is your GitHub username? ",
+            when:  function(answers) {
+                return answers.employeeType === 'Engineer';
+            },           
+        },
+        {
+            type: "input",
+            name: "internSchool",
+            message: "What is your school? ",
+            when:  function(answers) {
+                return answers.employeeType === 'Intern';
+            }, 
+        },
+        {
+            type: "input",
+            
+        }
+       ]
+    },
 ];
 
-var employeeTypePrompt = {
-    type: 'list',
-    name: 'addEmplyee',
-    message: 'Would you like to add an employee?',
-    choices: ['yes', 'no'],
-};
 
-function getEmployees() {
-    inquirer.prompt(employeeTypePrompt).then((answers) => {
-        var isAdding = answers.addEmplyee;
-        if ((isAdding) === 'yes') {
-            console.log(answers);
-            getEmployees();
-        } else { console.log("Meowsss"); }
-
-    })
-
-}
 
 function inititialize() {
-    inquirer.prompt(questions).then(getEmployees(answers)).then((answers) => {
+    inquirer.prompt(questions).then((answers) => {
         const newIndex = generatePage(answers);
         return writeToFile('./index.html', newIndex).then(writeFileResponse => {
                 console.log(writeFileResponse);
@@ -132,7 +141,7 @@ function writeToFile(fileName, data) {
         });
     });
 }
-// copying file
+
 const copyToFile = () => {
     return new Promise((resolve, reject) => {
         fs.copyFile('./src/style.css', './dist/style.css', err => {
@@ -149,34 +158,9 @@ const copyToFile = () => {
     });
 };
 
-function phoneNumberValidator(number) {
-    if (isNumeric(number)) {
-        var length = number.length;
-        if (length < 10) console.log('Phone number length should to be 10 digits');
 
-        var result = '',
-            end = number.substr(-7),
-            end1 = end.substr(0, 3),
-
-            end2 = end.substr(3),
-            mid = number.substr(-10, 3),
-            pre = '';
-        if (length > 10) {
-            pre = number.substr(0, (l - 10));
-        }
-        result += pre + ' (' + mid + ')-' + end1 + '-' + end2;
-
-    }
-    return result;
-}
-
-function isNumeric(string) {
-    if (typeof string != "string") return false
-    return !isNaN(string) &&
-        !isNaN(parseFloat(string))
-}
 
 inititialize();
-//.then()
+
 
 module.exports = { writeToFile, copyToFile };

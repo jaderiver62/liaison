@@ -10,8 +10,10 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
+        "fix-phone": "^1.15.0",
         "inquirer": "^7.3.3",
         "inquirer-loop": "^0.3.0",
-        "jest": "^24.9.0"
+        "jest": "^24.9.0",
+        "phone-number-validator": "^1.0.0"
     }
 }
