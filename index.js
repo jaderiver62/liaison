@@ -1,6 +1,7 @@
-const fs = require('fs');
+
 const inquirer = require('inquirer');
 const generatePage = require('./src/page-template');
+const { writeFile, copyFile } = require('./generateSite.js');
 
 inquirer.registerPrompt("loop", require("inquirer-loop")(inquirer));
 var validator = require("email-validator");
@@ -139,78 +140,27 @@ const questions = [{
     },
 ];
 
-
-
-function inititialize() {
-    inquirer.prompt(questions).then((answers) => {
-        const newIndex = generatePage(answers);
-        return writeToFile('./src/dist/index.html', newIndex).then(writeFileResponse => {
-                console.log(writeFileResponse);
-            })
-            .catch(err => {
-                console.log(err);
-
-            });
-    });
-}
-
-
-function writeToFile(fileName, data) {
-    return new Promise((resolve, reject) => {
-        fs.writeFile(fileName, data, err => {
-            if (err) {
-                reject(err);
-                return;
-            }
-
-            resolve({
-                ok: true,
-                message: 'File generated.'
-            });
-        });
-    });
-}
-
-const copyToFile = () => {
-    return new Promise((resolve, reject) => {
-        fs.copyFile('./src/style.css', './dist/style.css', err => {
-            if (err) {
-                reject(err);
-                return;
-            }
-
-            resolve({
-                ok: true,
-                message: 'Stylesheet generated.'
-            });
-        });
-    });
-};
-
-
 function isNumeric(string) {
     if (typeof string != "string") return false
     return !isNaN(string) &&
         !isNaN(parseFloat(string))
 }
 
+function inititialize() {
+    inquirer.prompt(questions).then((answers) => {
+        return generatePage(answers);
+    }).then(pageHTML => {
+        return writeFile(pageHTML);
+      })
+      .then(writeFileResponse => {
+        console.log(writeFileResponse);
+        return copyFile();
+      })
+      .then(copyFileResponse => {
+        console.log(copyFileResponse);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+}
 inititialize();
-
-
-module.exports = { writeToFile, copyToFile };
-
-
-// var result = '',
-// end = number.substr(-7),
-// end1 = end.substr(0, 3),
-
-// end2 = end.substr(3),
-// mid = number.substr(-10, 3),
-// pre = '';
-// if (length > 10) {
-// pre = number.substr(0, (l - 10));
-// }
-// result += pre + ' (' + mid + ')-' + end1 + '-' + end2;
-
-// }
-// return result;
