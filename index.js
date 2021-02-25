@@ -144,7 +144,7 @@ const questions = [{
 function inititialize() {
     inquirer.prompt(questions).then((answers) => {
         const newIndex = generatePage(answers);
-        return writeToFile('./index.html', newIndex).then(writeFileResponse => {
+        return writeToFile('./src/dist/index.html', newIndex).then(writeFileResponse => {
                 console.log(writeFileResponse);
             })
             .catch(err => {

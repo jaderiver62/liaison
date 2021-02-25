@@ -28,7 +28,7 @@ console.log(templateData);
 	  
   	<body>
   	<header>
-		<div class="container has-text-centered">
+		<div class="container-max-width has-text-centered">
 	  		<section class="hero is-primary">
 				  <div class="hero-body">
 					  <p class="title is-1">
@@ -39,11 +39,21 @@ console.log(templateData);
 				</div>
 			</section>
 	</header>
-	<main class="container my-5">
-
-
-
-	
+	<main class="container">
+		<div class="column is-one-quarter">
+			<div class="card">
+				<header class="card-header">
+	  				<p class="card-header-title">
+						Manager
+	  				</p>
+				</header>
+				<div class="card-content">
+	  				<div class="content">
+						Content
+	  				</div>
+				</div>
+  			</div>
+		</div>
 	</main>
 	<footer class="container text-center py-3">
 		<h3 class="text-dark">&copy;2021 </h3>
