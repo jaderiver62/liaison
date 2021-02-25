@@ -28,7 +28,7 @@ console.log(templateData);
 	  
   	<body>
   	<header>
-		<div class="container-max-width has-text-centered">
+		<div class="container-max-width has-text-centered custom-shadow">
 	  		<section class="hero is-primary">
 				  <div class="hero-body">
 					  <p class="title is-1">
@@ -43,7 +43,7 @@ console.log(templateData);
 		<div class="column is-one-quarter">
 			<div class="card">
 				<header class="card-header">
-	  				<p class="card-header-title">
+	  				<p class="card-header-title font-color is-centered">
 						Manager
 	  				</p>
 				</header>
