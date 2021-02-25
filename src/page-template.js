@@ -1,6 +1,16 @@
 module.exports = templateData => {
+// const generateEmployees = (employeeArray)=>{
+// 	if(employeeArray){
+// 		for(let i=0; i<employeeArray.length; i++){
+// 		// TO DO:  make cards in bulma displaying employee information
 
+// 		};
+// 	}
+// 	// return employee card generating code
+// }
+// ${generateEmployees(templateData.addEmployess)}
 console.log(templateData);
+
 
     return `<!DOCTYPE html>
   	<html lang="en">
@@ -15,16 +25,25 @@ console.log(templateData);
     	<link href="https://fonts.googleapis.com/css?family=Public+Sans:300i,300,500&display=swap" rel="stylesheet">
     	<link rel="stylesheet" href="style.css">
   	</head>
-  
+	  
   	<body>
   	<header>
-      
+	  <nav class="panel">
+	  	<p class="panel-heading">
+			<i class="fas fa-atom">
+	  			${templateData.headLine}
+			</i>
+		</p>
+	</nav>
 	</header>
 	<main class="container my-5">
-  		MEOW
+
+
+
+	
 	</main>
 	<footer class="container text-center py-3">
-		<h3 class="text-dark">&copy;2021 by Nina</h3>
+		<h3 class="text-dark">&copy;2021 </h3>
 	</footer>
 	</body>
 	</html>

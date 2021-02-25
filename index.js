@@ -1,7 +1,7 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
 const generatePage = require('./src/page-template');
-var fix = require('fix-phone');
+
 inquirer.registerPrompt("loop", require("inquirer-loop")(inquirer));
 var validator = require("email-validator");
 

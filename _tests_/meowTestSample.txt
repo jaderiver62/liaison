@@ -1,0 +1,13 @@
+{ headLine: 'Jadoo\'s Secret',
+  managerName: 'Jadoo',
+  managerId: '333',
+  managerEmail: 'jadison@catmail.com',
+  managerNumber: '4445556666',
+  addEmployee:
+   [ { employeeType: 'Engineer',
+       engineerGitHub: 'nuggleberry',
+       employeeName: 'Nuggles Butts',
+       employeeId: '666',
+       employeeEmail: 'nugglesbutts@meows.com' 
+    } ] 
+}
