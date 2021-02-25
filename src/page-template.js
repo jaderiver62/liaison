@@ -28,13 +28,16 @@ console.log(templateData);
 	  
   	<body>
   	<header>
-	  <nav class="panel">
-	  	<p class="panel-heading">
-			<i class="fas fa-atom">
-	  			${templateData.headLine}
-			</i>
-		</p>
-	</nav>
+		<div class="container has-text-centered">
+	  		<section class="hero is-primary">
+				  <div class="hero-body">
+					  <p class="title is-1">
+						<i class="fas fa-atom">
+	  					${templateData.headLine}
+						</i>
+					</p>
+				</div>
+			</section>
 	</header>
 	<main class="container my-5">
 
