@@ -4,7 +4,68 @@ const generateEmployees = (employeeArray)=>{
 	if(employeeArray){
 
 		for(let i=0; i<employeeArray.length; i++){
-		// TO DO:  make cards in bulma displaying employee information
+			result += `
+				  <div class="column is-one-quarter">
+		<div class="card">
+			<header class="card-header">
+				  <p class="card-header-title font-color is-centered">
+				  ${templateData.employeeName}<br>
+					`;
+			if(employeeArray.employeeType === "Engineer"){
+				result += `
+				<i class="fas fa-laptop-code"></i>
+				&nbsp;&nbsp;&nbsp;&nbsp;Engineer
+				`;
+			} else{
+				result += `
+				<i class="fas fa-book"></i>
+				&nbsp;&nbsp;&nbsp;&nbsp;Intern
+				`;
+			}
+			result += `
+				</p>
+				</header>
+				<div class="card-content custom-padding">
+					  <div class="content">
+					  <ul style="list-style-type:none; margin: 32px;">
+							<div class="list-item">
+								<li>
+									ID:
+									&nbsp;&nbsp;&nbsp;&nbsp;
+									${templateData.employeeId}
+								</li>
+							</div>
+							<div class="list-item">
+								<li>
+								  E-mail:
+									&nbsp;&nbsp;&nbsp;&nbsp;
+									<a href="mailto: ${templateData.employeeEmail}"> ${templateData.employeeEmail}</a>
+								</li>
+							</div>
+							<div class="list-item">
+								<li>`;
+								if(employeeArray.employeeType === "Engineer"){
+									result += `
+									GitHub:
+									&nbsp;&nbsp;&nbsp;&nbsp;
+									${templateData.engineerGitHub}
+									`;
+								} else{
+									result += `
+									School:
+									&nbsp;&nbsp;&nbsp;&nbsp;
+									${templateData.internSchool}
+									`;
+								}
+
+			result += `
+								</li>
+							</div>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>`
 
 		}
 	}
@@ -37,9 +98,7 @@ console.log(templateData);
 					  <i class="fas fa-atom"></i>
 					  &nbsp;&nbsp;&nbsp;
 					  ${templateData.headLine}
-					  <i class="fas fa-laptop-code"></i>
-					  <i class="fas fa-book"></i>
-				  </p>
+					</p>
 			  </div>
 		  </section>
   </header>
@@ -48,9 +107,10 @@ console.log(templateData);
 		  <div class="card">
 			  <header class="card-header">
 					<p class="card-header-title font-color is-centered">
-					  <i class="fas fa-lightbulb"></i>
-					  &nbsp;&nbsp;&nbsp;&nbsp;
-					  ${templateData.managerName}
+					${templateData.managerName}<br>  
+					<i class="fas fa-lightbulb"></i>
+					  &nbsp;&nbsp;&nbsp;&nbsp;Manager
+
 				  </p>
 				  </header>
 				  <div class="card-content custom-padding">
