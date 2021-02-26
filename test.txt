@@ -13,3 +13,23 @@
 
 // 
 // return result;
+
+
+{ headLine: 'Nuggle Corp',  ${templateData.headLine}
+  managerName: 'Nuggleberry',   ${templateData.managerName}
+  managerId: '333', ${templateData.managerId}
+  managerEmail: 'nuggs@gmail.com',  ${templateData.managerEmail}
+  managerNumber: '3334445555',  ${templateData.managerNumber}
+  addEmployee:
+   [ { employeeType: 'Engineer',
+       engineerGitHub: 'jadison6a',
+       employeeName: 'Jadoo',
+       employeeId: '333222',
+       employeeEmail: 'jadison6a@gmail.com' },
+     { employeeType: 'Intern',
+       internSchool: 'University of Minnesota',
+       employeeName: 'Nina Beana',
+       employeeId: '3211',
+       employeeEmail: 'jaderiver64@gmail.com' } ] }
+{ ok: true, message: 'File created!' }
+{ ok: true, message: 'Stylesheet created!' }

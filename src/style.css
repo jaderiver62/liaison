@@ -1,7 +1,10 @@
+header{
+    padding-bottom: 20px;
+}
 .card-header{
-    background-color: rgb(162, 87, 233);
-   
-
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: rgb(53, 74, 141);
 }
 .font-color {
     color: whitesmoke;
@@ -9,4 +12,13 @@
 }
 .custom-shadow{
      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.list-item{
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    box-shadow: 0 2px 4px 0 rgba(116, 107, 107, 0.2), 0 4px 10px 0 rgba(116, 107, 107, 0.2);
+}
+.custom-padding{
+    padding: 0%;
 }
