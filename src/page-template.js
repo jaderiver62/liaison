@@ -71,7 +71,7 @@ const generateEmployees = (employeeArray)=>{
 	}
 	return result;
 }
-{generateEmployees(templateData.addEmployess)}
+
 console.log(templateData);
 
 
