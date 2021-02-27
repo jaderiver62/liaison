@@ -63,17 +63,56 @@ const generateEmployees = (employeeArray) => {
 									}
 	
 				result += `
-									</li>
-								</div>
-							</ul>
-						</div>
+				<i class="fas fa-book"></i>
+				&nbsp;&nbsp;&nbsp;&nbsp;Intern
+				`;
+			}
+			result += `
+				</p>
+				</header>
+				<div class="card-content custom-padding">
+					  <div class="content">
+					  <ul style="list-style-type:none; margin: 32px;">
+							<div class="list-item">
+								<li>
+									ID:
+									&nbsp;&nbsp;&nbsp;&nbsp;
+									${templateData.employeeId}
+								</li>
+							</div>
+							<div class="list-item">
+								<li>
+								  E-mail:
+									&nbsp;&nbsp;&nbsp;&nbsp;
+									<a href="mailto: ${templateData.employeeEmail}"> ${templateData.employeeEmail}</a>
+								</li>
+							</div>
+							<div class="list-item">
+								<li>`;
+								if(employeeArray.employeeType === "Engineer"){
+									result += `
+									GitHub:
+									&nbsp;&nbsp;&nbsp;&nbsp;
+									${templateData.engineerGitHub}
+									`;
+								} else{
+									result += `
+									School:
+									&nbsp;&nbsp;&nbsp;&nbsp;
+									${templateData.internSchool}
+									`;
+								}
+
+			result += `
+								</li>
+							</div>
+						</ul>
 					</div>
 				</div>
-			</div>`
-	
-			}
+			</div>
+		</div>`
+
 		}
-		return result;
 	}
 
 	console.log(templateData);
@@ -137,11 +176,24 @@ const generateEmployees = (employeeArray) => {
 									  <li>
 									  Phone Number:
 									  &nbsp;&nbsp;&nbsp;&nbsp;
-									  ${templateData.managerNumber}
-									  </li>
-								  </div>
-							  </ul>
-						  </div>
+									  ${templateData.managerId}
+								  </li>
+							  </div>
+							  <div class="list-item">
+							  	<li>
+									E-mail:
+								  	&nbsp;&nbsp;&nbsp;&nbsp;
+								  	<a href="mailto: ${templateData.managerEmail}"> ${templateData.managerEmail}</a>
+							  	</li>
+							  </div>
+							  <div class="list-item">
+							  	<li>
+								  Phone Number:
+								  &nbsp;&nbsp;&nbsp;&nbsp;
+								  ${templateData.managerNumber}
+							  	</li>
+							  </div>
+						  </ul>
 					  </div>
 				  </div>
 			  </div>
