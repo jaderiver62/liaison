@@ -1,25 +1,29 @@
 module.exports = templateData => {
-	const generateEmployees = (employeeArray)=>{
+
+
+
+
+const generateEmployees = (employeeArray) => {
 		let result= ``;
 		if(employeeArray){
 	
 			for(let i=0; i<employeeArray.length; i++){
 				result += `
-					  <div class="column is-one-quarter">
+		 <div class="column is-one-quarter">
 			<div class="card">
 				<header class="card-header">
 					  <p class="card-header-title font-color is-centered">
-					  ${templateData.employeeName}<br>
+					  ${employeeArray[i].employeeName}
 						`;
-				if(employeeArray.employeeType === "Engineer"){
+				if(employeeArray[i].employeeType === "Engineer"){
 					result += `
-					<i class="fas fa-laptop-code"></i>
-					&nbsp;&nbsp;&nbsp;&nbsp;Engineer
+					&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-laptop-code"></i>&nbsp;&nbsp;&nbsp;&nbsp;Engineer
+					</p>
 					`;
 				} else{
 					result += `
-					<i class="fas fa-book"></i>
-					&nbsp;&nbsp;&nbsp;&nbsp;Intern
+					&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-book"></i>&nbsp;&nbsp;&nbsp;&nbsp;Intern
+					</p>
 					`;
 				}
 				result += `
@@ -32,29 +36,29 @@ module.exports = templateData => {
 									<li>
 										ID:
 										&nbsp;&nbsp;&nbsp;&nbsp;
-										${templateData.employeeId}
+										${employeeArray[i].employeeId}
 									</li>
 								</div>
 								<div class="list-item">
 									<li>
 									  E-mail:
 										&nbsp;&nbsp;&nbsp;&nbsp;
-										<a href="mailto: ${templateData.employeeEmail}"> ${templateData.employeeEmail}</a>
+										<a href="mailto: ${employeeArray[i].employeeEmail}"> ${employeeArray[i].employeeEmail}</a>
 									</li>
 								</div>
 								<div class="list-item">
 									<li>`;
-									if(employeeArray.employeeType === "Engineer"){
+									if(employeeArray[i].employeeType === "Engineer"){
 										result += `
 										GitHub:
 										&nbsp;&nbsp;&nbsp;&nbsp;
-										${templateData.engineerGitHub}
+										${employeeArray[i].engineerGitHub}
 										`;
 									} else{
 										result += `
 										School:
 										&nbsp;&nbsp;&nbsp;&nbsp;
-										${templateData.internSchool}
+										${employeeArray[i].internSchool}
 										`;
 									}
 	
@@ -71,7 +75,7 @@ module.exports = templateData => {
 		}
 		return result;
 	}
-	{generateEmployees(templateData.addEmployess)}
+
 	console.log(templateData);
 	
 	
@@ -103,15 +107,14 @@ module.exports = templateData => {
 			  </section>
 	  </header>
 	  <main class="container">
-		  <div class="column is-one-quarter">
-			  <div class="card">
-				  <header class="card-header">
-						<p class="card-header-title font-color is-centered">
-						${templateData.managerName}<br>  
-						<i class="fas fa-lightbulb"></i>
-						  &nbsp;&nbsp;&nbsp;&nbsp;Manager
+	  	<div class="columns is-mobile is-multiline is-centered">
+			  <div class="column is-one-quarter">
+				  <div class="card">
+					  <header class="card-header">
+							<p class="card-header-title font-color is-centered">
+							${templateData.managerName}&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-lightbulb"></i>&nbsp;&nbsp;&nbsp;&nbsp;Manager
 	
-					  </p>
+						  </p>
 					  </header>
 					  <div class="card-content custom-padding">
 							<div class="content">
@@ -142,7 +145,8 @@ module.exports = templateData => {
 					  </div>
 				  </div>
 			  </div>
-			  ${generateEmplyoees(addEmployee)}
+			  ${generateEmployees(templateData.addEmployee)}
+		  </div>
 		  </main>
 		  <footer class="container text-center py-3">
 			  <h3 class="text-dark">&copy;2021 </h3>

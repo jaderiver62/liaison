@@ -3,6 +3,7 @@ const inquirer = require('inquirer');
 const generatePage = require('./src/page-template');
 const { writeFile, copyFile } = require('./generateSite.js');
 
+
 inquirer.registerPrompt("loop", require("inquirer-loop")(inquirer));
 var validator = require("email-validator");
 
@@ -88,18 +89,6 @@ const questions = [{
             choices: ["Engineer", "Intern"]
         },
         {
-            type: "input",
-            name: "engineerGitHub",
-            message: "What is the engineer's GitHub username? ",
-            when: ({employeeType})=> employeeType === "Engineer",
-        },
-        {
-            type: "input",
-            name: "internSchool",
-            message: "What is the Intern's school name? ",
-            when: ({employeeType})=> employeeType === "Intern"
-        },
-        {
             type: 'input',
             name: 'employeeName',
             message: 'What is the Employee\'s name (Required)?',
@@ -135,6 +124,17 @@ const questions = [{
                     return false;
                 }
             }
+        },{
+            type: "input",
+            name: "engineerGitHub",
+            message: "What is the engineer's GitHub username? ",
+            when: ({employeeType})=> employeeType === "Engineer",
+        },
+        {
+            type: "input",
+            name: "internSchool",
+            message: "What is the Intern's school name? ",
+            when: ({employeeType})=> employeeType === "Intern"
         },
        ]
     },
