@@ -1,11 +1,18 @@
+// These are the required references for index, I use an external js file for writing/copying and another for generating the content using my page-template
 
 const inquirer = require('inquirer');
 const generatePage = require('./src/page-template');
 const { writeFile, copyFile } = require('./generateSite.js');
 
+// This portion uses the inquirer package to get user input
 
 inquirer.registerPrompt("loop", require("inquirer-loop")(inquirer));
+
+// I added an email validator to simplify this part and to ensure accurate input
+
 var validator = require("email-validator");
+
+// An array of user prompts in inquirer and using inquirer-loop
 
 const questions = [{
         type: 'input',
@@ -61,7 +68,13 @@ const questions = [{
         name: 'managerNumber',
         message: 'Please enter an office phone number for the Manager: (10 or more digits, only numbers please!)',
         validate: (number) => {
-            return (number.length >= 10) && (isNumeric(number)) ? true : false;
+            if((number.length >= 10) && (isNumeric(number))){
+                return true; 
+            }
+            else{ 
+                console.log("Please enter 10 or more numbers and do not enter any non numerical characters.");
+                return false;}
+            // I check that the input is long enough and is actually just numbers, if it isn't it won't accept input
         }
     },
     {
