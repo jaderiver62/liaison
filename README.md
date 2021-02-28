@@ -11,8 +11,8 @@ This app generates a Team Dashboard using the command line for easy access to te
 
 ---------------------------------------
 
-Project Link: 
-[Liaison](https://github.com/jaderiver62/liaison)
+Project Example Output Link: 
+[Liaison](https://jaderiver62.github.io/liaison/src/dist/)
 
 ---------------------------------------
 
