@@ -23,7 +23,7 @@ Project Link:
 * [License](#license)
 * [Testing](#testing)
 * [Questions](#questions)
-* [Contributions](#contributions)
+
 ---------------------------------------
 
 
@@ -56,12 +56,15 @@ Instructions for use
 ---------------------------------------
 
 ## Testing
-Testing liaison is simple, but it does require [Jest](https://jestjs.io/).  Once it is installed simply run the following command lines:
+Testing liaison is simple, but it does require [Jest](https://jestjs.io/).  Once Jest is installed simply run the following command lines:
 
 >
 >$ npm run test
 >
 
+This code will test all of the object classes in liaison to ensure that it is working correctly.
+
+All tests should pass, if they don't pass your testing please [contact](#questions) the creater!
 ---------------------------------------
 
 Written using:
