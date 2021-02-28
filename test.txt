@@ -1,18 +1,5 @@
 
-// var result = '',
-// end = number.substr(-7),
-// end1 = end.substr(0, 3),
 
-// end2 = end.substr(3),
-// mid = number.substr(-10, 3),
-// pre = '';
-// if (length > 10) {
-// pre = number.substr(0, (l - 10));
-// 
-// result += pre + ' (' + mid + ')-' + end1 + '-' + end2;
-
-// 
-// return result;
 
 
 { headLine: 'Nuggle Corp',  ${templateData.headLine}

@@ -3,29 +3,43 @@ module.exports = templateData => {
 	const Engineer = require('../lib/Engineer');
 	const Intern = require('../lib/Intern');
 
+	
 	let manager;
+	let employeeObjArray = [];
 
-	function generateManager(){
-		manager = new Manager(templateData.managerName, templateData.managerEmail, templateData.managerId, templateData.managerNumber);
-	}
+	
 	// small functions for each type of employee object and push into an array that is filter - map with the manager use template literal
 	//instead of looping through for each employee do it specifically for each type of object
 
-	const generateEmployees = (employeeArray) => {
-		let result = ``;
-		if (employeeArray) {
+	function generateEmployeeArray(array){
+		if (array) {
+			for (let i = 0; i < array.length; i++) {
+				if (array[i].employeeType === "Engineer") {
+					employeeObjArray.push(new Engineer(array[i].employeeName, array[i].employeeEmail, array[i].employeeId, array[i].engineerGitHub));
+				} else{
+					employeeObjArray.push(new Intern(array[i].employeeName, array[i].employeeEmail, array[i].employeeId, array[i].internSchool));
+				}
+			}
+			return generateEmployeeCode();
+		}
 
-			for (let i = 0; i < employeeArray.length; i++) {
+	}
+
+	function generateEmployeeCode(){
+		let result = ``;
+		if (employeeObjArray) {
+
+			for (let i = 0; i < employeeObjArray.length; i++) {
 				result += `
 					  <div class="column is-one-quarter">
 			<div class="card">
 				<header class="card-header">
 				<div class="media-content">
 				<p class="title is-4">
-					  ${employeeArray[i].employeeName}</p>
+					  ${employeeObjArray[i].getName()}</p>
 					  <p class="subtitle is-6">
 						`;
-				if (employeeArray[i].employeeType === "Engineer") {
+				if (employeeObjArray[i].getRole() === "Engineer") {
 					result += `
 					<i class="fas fa-laptop-code"></i>
 					&nbsp;&nbsp;&nbsp;&nbsp;Engineer
@@ -47,29 +61,29 @@ module.exports = templateData => {
 									<li>
 										ID:
 										&nbsp;&nbsp;&nbsp;&nbsp;
-										${employeeArray[i].employeeId}
+										${employeeObjArray[i].getId()}
 									</li>
 								</div>
 								<div class="list-item">
 									<li>
 									  E-mail:
 										&nbsp;&nbsp;&nbsp;&nbsp;
-										<a href="mailto: ${employeeArray[i].employeeEmail}"> ${employeeArray[i].employeeEmail}</a>
+										<a href="mailto: ${employeeObjArray[i].getEmail()}"> ${employeeObjArray[i].getEmail()}</a>
 									</li>
 								</div>
 								<div class="list-item">
 									<li>`;
-				if (employeeArray[i].employeeType === "Engineer") {
+				if (employeeObjArray[i].getRole() === "Engineer") {
 					result += `
 										GitHub:
 										&nbsp;&nbsp;&nbsp;&nbsp;
-										<a href="https://github.com/${employeeArray[i].engineerGitHub}">${employeeArray[i].engineerGitHub}</a>
+										<a href="https://github.com/${employeeObjArray[i].getGitHub()}">${employeeObjArray[i].getGitHub()}</a>
 										`;
 				} else {
 					result += `
 										School:
 										&nbsp;&nbsp;&nbsp;&nbsp;
-										${employeeArray[i].internSchool}
+										${employeeObjArray[i].getSchool()}
 										`;
 				}
 
@@ -89,7 +103,24 @@ module.exports = templateData => {
 
 	console.log(templateData);
 	generateManager();
+	function generateManager(){
 
+		manager = new Manager(templateData.managerName, templateData.managerEmail, templateData.managerId, phoneNumberFormatter(templateData.managerNumber));
+		function phoneNumberFormatter(number){
+			let end = number.substr(-7);
+			let end1 = end.substr(0, 3);
+		
+			let end2 = end.substr(3);
+			let mid = number.substr(-10, 3);
+			let pre = '';
+			if (number.length > 10) {
+			pre = number.substr(0, (l - 10));
+		
+			return pre + ' (' + mid + ')-' + end1 + '-' + end2;
+		
+		}
+	}
+}
 	return `<!DOCTYPE html>
 		<html lang="en">
 	
@@ -159,7 +190,7 @@ module.exports = templateData => {
 					  </div>
 				  </div>
 			  </div>
-			  ${generateEmployees(templateData.addEmployee)}
+			  ${generateEmployeeArray(templateData.addEmployee)}
 			  </div>
 		  </main>
 		  <footer class="container text-center py-3">
