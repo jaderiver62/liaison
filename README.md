@@ -41,7 +41,7 @@ Clone the code in our repo and install npm.  From the command line run the follo
 >$ node index
 >
 
-Answer the prpmpts and new [index.html](src/dist/index.html) and [style.css](src/dist/style.css) files will be generated in the [src/dist/](src/dist/) folder.
+Answer the prompts and new [index.html](src/dist/index.html) and [style.css](src/dist/style.css) files will be generated in the [src/dist/](src/dist/) folder.
 
 ---------------------------------------
 
