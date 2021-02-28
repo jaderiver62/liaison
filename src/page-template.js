@@ -1,35 +1,35 @@
 module.exports = templateData => {
-	const Manager = require('../lib/Manager');
-	const Engineer = require('../lib/Engineer');
-	const Intern = require('../lib/Intern');
-	
-	
-	let manager;
-	let employeeObjArray = [];
-
-	
+    const Manager = require('../lib/Manager');
+    const Engineer = require('../lib/Engineer');
+    const Intern = require('../lib/Intern');
 
 
-	function generateEmployeeArray(array){
-		if (array) {
-			for (let i = 0; i < array.length; i++) {
-				if (array[i].employeeType === "Engineer") {
-					employeeObjArray.push(new Engineer(array[i].employeeName, array[i].employeeEmail, array[i].employeeId, array[i].engineerGitHub));
-				} else{
-					employeeObjArray.push(new Intern(array[i].employeeName, array[i].employeeEmail, array[i].employeeId, array[i].internSchool));
-				}
-			}
-			return generateEmployeeCode();
-		}
+    let manager;
+    let employeeObjArray = [];
 
-	}
 
-	function generateEmployeeCode(){
-		let result = ``;
-		if (employeeObjArray) {
 
-			for (let i = 0; i < employeeObjArray.length; i++) {
-				result += `
+
+    function generateEmployeeArray(array) {
+        if (array) {
+            for (let i = 0; i < array.length; i++) {
+                if (array[i].employeeType === "Engineer") {
+                    employeeObjArray.push(new Engineer(array[i].employeeName, array[i].employeeEmail, array[i].employeeId, array[i].engineerGitHub));
+                } else {
+                    employeeObjArray.push(new Intern(array[i].employeeName, array[i].employeeEmail, array[i].employeeId, array[i].internSchool));
+                }
+            }
+            return generateEmployeeCode();
+        }
+
+    }
+
+    function generateEmployeeCode() {
+        let result = ``;
+        if (employeeObjArray) {
+
+            for (let i = 0; i < employeeObjArray.length; i++) {
+                result += `
 					  <div class="column is-one-quarter">
 			<div class="card">
 				<header class="card-header">
@@ -38,18 +38,18 @@ module.exports = templateData => {
 					  ${employeeObjArray[i].getName()}</p>
 					  <p class="subtitle is-6">
 						`;
-				if (employeeObjArray[i].getRole() === "Engineer") {
-					result += `
+                if (employeeObjArray[i].getRole() === "Engineer") {
+                    result += `
 					<i class="fas fa-laptop-code"></i>
 					&nbsp;&nbsp;&nbsp;&nbsp;Engineer
 					`;
-				} else {
-					result += `
+                } else {
+                    result += `
 					<i class="fas fa-book"></i>
 					&nbsp;&nbsp;&nbsp;&nbsp;Intern
 					`;
-				}
-				result += `
+                }
+                result += `
 				</p>
 				</div>
 			</header>
@@ -72,21 +72,21 @@ module.exports = templateData => {
 								</div>
 								<div class="list-item">
 									<li>`;
-				if (employeeObjArray[i].getRole() === "Engineer") {
-					result += `
+                if (employeeObjArray[i].getRole() === "Engineer") {
+                    result += `
 										GitHub:
 										&nbsp;&nbsp;&nbsp;&nbsp;
 										<a href="https://github.com/${employeeObjArray[i].getGitHub()}">${employeeObjArray[i].getGitHub()}</a>
 										`;
-				} else {
-					result += `
+                } else {
+                    result += `
 										School:
 										&nbsp;&nbsp;&nbsp;&nbsp;
 										${employeeObjArray[i].getSchool()}
 										`;
-				}
+                }
 
-				result += `
+                result += `
 									</li>
 								</div>
 							</ul>
@@ -95,34 +95,36 @@ module.exports = templateData => {
 				</div>
 			</div>`
 
-			}
-		}
-		return result;
-	}
+            }
+        }
+        return result;
+    }
 
-	console.log(templateData);
-	generateManager();
-	function generateManager(){
-		let number = formatNumber(templateData.managerNumber);
-		manager = new Manager(templateData.managerName, templateData.managerEmail, templateData.managerId, number);
-		
-	}
-	function formatNumber(phoneNumber){
+    console.log(templateData);
+    generateManager();
 
-		let result = ('' + phoneNumber).replace(/\D/g, '');
-		
+    function generateManager() {
+        let number = formatNumber(templateData.managerNumber);
+        manager = new Manager(templateData.managerName, templateData.managerEmail, templateData.managerId, number);
 
-		let match = result.match(/^(1|)?(\d{3})(\d{3})(\d{4})$/);
-		
-		if (match) {
+    }
 
-		  let internationalCode = (match[1] ? '+1 ' : '')
-		  return [internationalCode, '(', match[2], ') ', match[3], '-', match[4]].join('')
-		}
-		
-		return null;
-	  }
-	return `<!DOCTYPE html>
+    function formatNumber(phoneNumber) {
+
+        let result = ('' + phoneNumber).replace(/\D/g, '');
+
+
+        let match = result.match(/^(1|)?(\d{3})(\d{3})(\d{4})$/);
+
+        if (match) {
+
+            let internationalCode = (match[1] ? '+1 ' : '')
+            return [internationalCode, '(', match[2], ') ', match[3], '-', match[4]].join('')
+        }
+
+        return null;
+    }
+    return `<!DOCTYPE html>
 		<html lang="en">
 	
 		<head>
@@ -148,6 +150,7 @@ module.exports = templateData => {
 						</p>
 				  </div>
 			  </section>
+			</div>
 	  </header>
 	  <main class="container">
 	  <div class="columns is-mobile is-multiline is-centered">
