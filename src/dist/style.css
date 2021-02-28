@@ -1,29 +1,36 @@
-header{
+header {
     padding-bottom: 20px;
 }
-.card-header{
+
+.card-header {
     padding-top: 10px;
     padding-bottom: 10px;
     background-color: rgb(53, 74, 141);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-.title, .subtitle {
+
+.title,
+.subtitle {
     color: whitesmoke;
     text-align: center;
 }
-.custom-shadow{
-     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+.custom-shadow {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-.list-item{
+
+.list-item {
     background-color: rgb(250, 244, 236);
     padding-left: 10px;
     padding-top: 10px;
     padding-bottom: 10px;
     box-shadow: 0 2px 4px 0 rgba(116, 107, 107, 0.2), 0 4px 10px 0 rgba(116, 107, 107, 0.2);
 }
-.custom-padding{
+
+.custom-padding {
     padding: 0%;
 }
-.card{
+
+.card {
     background-color: rgb(240, 243, 241);
 }
