@@ -48,10 +48,14 @@ Answer the prompts and new [index.html](src/dist/index.html) and [style.css](src
 ## Usage
 
 
-Instructions for use
+To generate the liaison dashboard simply follow the prompts in the command line to input your teams' data!
+
+The following image shows an example of the results after running liaison:
 
 
 ![Project Usage Image](lib/images/screenshot.png)
+
+Please see this video to watch liaison as it's supposed to run: [liaison](https://drive.google.com/file/d/1AzHx7LJeq1fQy4OE3BdHj4xiKCVcP3e0/view)
 
 ---------------------------------------
 
