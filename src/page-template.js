@@ -2,14 +2,13 @@ module.exports = templateData => {
 	const Manager = require('../lib/Manager');
 	const Engineer = require('../lib/Engineer');
 	const Intern = require('../lib/Intern');
-
+	
 	
 	let manager;
 	let employeeObjArray = [];
 
 	
-	// small functions for each type of employee object and push into an array that is filter - map with the manager use template literal
-	//instead of looping through for each employee do it specifically for each type of object
+
 
 	function generateEmployeeArray(array){
 		if (array) {

@@ -7,8 +7,7 @@
 ## Description
 This app generates a Team Dashboard using the command line for easy access to team information
 
-![Project Usage Image](lib/images/screenshot.png)
-
+![App Image](lib/images/scrnshot1.png)
 ---------------------------------------
 
 Project Link: 
@@ -40,7 +39,8 @@ Installation information
 
 Instructions for use
 
-![Project Usage Image](image)
+
+![Project Usage Image](lib/images/screenshot.png)
 
 ---------------------------------------
 
