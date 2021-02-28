@@ -7,7 +7,7 @@
 ## Description
 This app generates a Team Dashboard using the command line for easy access to team information
 
-![App Image](lib/images/scrnshot1.jpg)
+![App Image](lib/images/scrnshot1.png)
 ---------------------------------------
 
 Project Link: 
