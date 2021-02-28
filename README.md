@@ -55,7 +55,7 @@ The following image shows an example of the results after running liaison:
 
 ![Project Usage Image](lib/images/screenshot.png)
 
-Please see this video to watch liaison as it's supposed to run: [liaison](link)
+Please see this video to watch liaison as it's supposed to run: [liaison](https://drive.google.com/file/d/1AzHx7LJeq1fQy4OE3BdHj4xiKCVcP3e0/view)
 
 ---------------------------------------
 
