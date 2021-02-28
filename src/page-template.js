@@ -181,7 +181,7 @@ module.exports = templateData => {
 			  </div>
 		  </main>
 		  <footer class="container text-center py-3">
-			  <h3 class="text-dark">&copy;2021 </h3>
+			  <h3 class="text-dark">&copy;2021 ${templateData.headLine}</h3>
 		  </footer>
 	  </body>
 	</html>
