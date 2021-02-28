@@ -66,7 +66,6 @@ const generateEmployees = (employeeArray) => {
 				<i class="fas fa-book"></i>
 				&nbsp;&nbsp;&nbsp;&nbsp;Intern
 				`;
-			}
 			result += `
 				</p>
 				</header>
@@ -93,7 +92,7 @@ const generateEmployees = (employeeArray) => {
 									result += `
 									GitHub:
 									&nbsp;&nbsp;&nbsp;&nbsp;
-									${templateData.engineerGitHub}
+									<a href="https://github.com/${templateData.engineerGitHub}">${templateData.engineerGitHub}</a>
 									`;
 								} else{
 									result += `
@@ -102,7 +101,6 @@ const generateEmployees = (employeeArray) => {
 									${templateData.internSchool}
 									`;
 								}
-
 			result += `
 								</li>
 							</div>
@@ -111,8 +109,10 @@ const generateEmployees = (employeeArray) => {
 				</div>
 			</div>
 		</div>`
+			}
 
 		}
+		return result;
 	}
 
 	console.log(templateData);
