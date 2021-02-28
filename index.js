@@ -59,7 +59,7 @@ const questions = [{
     {
         type: 'input',
         name: 'managerNumber',
-        message: 'Please enter an office phone number for the Manager: ',
+        message: 'Please enter an office phone number for the Manager: (10 or more digits, only numbers please!)',
         validate: (number) => {
             return (number.length >= 10) && (isNumeric(number)) ? true : false;
         }
