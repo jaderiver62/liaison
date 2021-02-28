@@ -31,7 +31,17 @@ Project Link:
 ---------------------------------------
 
 ## Installation
-Installation information
+Installation dependencies:
+* [node.js](https://nodejs.org/en/)
+* [npm](https://www.npmjs.com/)
+
+Clone the code in our repo and install npm.  From the command line run the following code:
+
+>
+>$ node index
+>
+
+Answer the prpmpts and new [index.html](src/dist/index.html) and [style.css](src/dist/style.css) files will be generated in the [src/dist/](src/dist/) folder.
 
 ---------------------------------------
 
@@ -46,7 +56,11 @@ Instructions for use
 ---------------------------------------
 
 ## Testing
-Testing information
+Testing liaison is simple, but it does require [Jest](https://jestjs.io/).  Once it is installed simply run the following command lines:
+
+>
+>$ npm run test
+>
 
 ---------------------------------------
 
@@ -60,25 +74,10 @@ Written using:
 * CSS
    
 * ES6
-   
-* jQuery
-   
-* Bootstrap
-   
+
 * Node
    
 
----------------------------------------
-
-## Contributions
-
-                     
-* [contributor 1](link)
-                     
-* [contributor 2](link)
-                     
-* [contributor 3](link)
-                     
 
 ---------------------------------------
 
