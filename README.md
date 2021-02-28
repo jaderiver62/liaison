@@ -41,7 +41,7 @@ Clone the code in our repo and install npm.  From the command line run the follo
 >$ node index
 >
 
-Answer the prpmpts and new [index.html](src/dist/index.html) and [style.css](src/dist/style.css) files will be generated in the [src/dist/](src/dist/) folder.
+Answer the prompts and new [index.html](src/dist/index.html) and [style.css](src/dist/style.css) files will be generated in the [src/dist/](src/dist/) folder.
 
 ---------------------------------------
 
@@ -60,12 +60,15 @@ Please see this video to watch liaison as it's supposed to run: [liaison](link)
 ---------------------------------------
 
 ## Testing
-Testing liaison is simple, but it does require [Jest](https://jestjs.io/).  Once it is installed simply run the following command lines:
+Testing liaison is simple, but it does require [Jest](https://jestjs.io/).  Once Jest is installed simply run the following command lines:
 
 >
 >$ npm run test
 >
 
+This code will test all of the object classes in liaison to ensure that it is working correctly.
+
+All tests should pass, if they don't pass your testing please [contact](#questions) the creater!
 ---------------------------------------
 
 Written using:
