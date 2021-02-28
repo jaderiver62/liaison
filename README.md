@@ -31,7 +31,17 @@ Project Link:
 ---------------------------------------
 
 ## Installation
-Installation information
+Installation dependencies:
+* node.js
+* npm
+
+Clone the code in our repo and install npm.  From the command line run the following code:
+
+>
+>$ node index
+>
+
+Answer the prpmpts and 
 
 ---------------------------------------
 
