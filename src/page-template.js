@@ -105,22 +105,10 @@ module.exports = templateData => {
 	generateManager();
 	function generateManager(){
 
-		manager = new Manager(templateData.managerName, templateData.managerEmail, templateData.managerId, phoneNumberFormatter(templateData.managerNumber));
-		function phoneNumberFormatter(number){
-			let end = number.substr(-7);
-			let end1 = end.substr(0, 3);
+		manager = new Manager(templateData.managerName, templateData.managerEmail, templateData.managerId, templateData.managerNumber);
 		
-			let end2 = end.substr(3);
-			let mid = number.substr(-10, 3);
-			let pre = '';
-			if (number.length > 10) {
-			pre = number.substr(0, (l - 10));
-		
-			return pre + ' (' + mid + ')-' + end1 + '-' + end2;
-		
-		}
 	}
-}
+
 	return `<!DOCTYPE html>
 		<html lang="en">
 	

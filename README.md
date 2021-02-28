@@ -5,7 +5,9 @@
 ---------------------------------------
 
 ## Description
-Information about the project
+This app generates a Team Dashboard using the command line for easy access to team information
+
+![Project Usage Image](lib/images/screenshot.png)
 
 ---------------------------------------
 
