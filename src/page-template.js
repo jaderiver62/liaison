@@ -153,7 +153,7 @@ module.exports = templateData => {
 			</div>
 	  </header>
 	  <main class="container">
-	  <div class="columns is-multiline is-centered is-variable is-1-mobile is-0-tablet is-3-desktop is-8-widescreen is-1-fullhd">
+	  <div class="columns is-multiline is-centered is-variable is-1-mobile is-1-tablet is-3-desktop is-8-widescreen is-1-fullhd">
 		  <div class="column is-one-quarter">
 			  <div class="card">
 				  <header class="card-header">
