@@ -1,6 +1,6 @@
 const Employee = require('../lib/Employee.js');
 const Intern = require('../lib/Intern.js');
-
+// All tests passing
 
 test('create an intern object ', () => {
 

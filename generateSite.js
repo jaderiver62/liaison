@@ -1,4 +1,6 @@
 
+// This js handles the copying and writing of the index.html and style.css files
+
 const fs = require('fs');
 
 
@@ -12,7 +14,7 @@ const writeFile = fileContent => {
 
       resolve({
         ok: true,
-        message: 'File created!'
+        message: 'File has been created!'
       });
     });
   });
@@ -29,7 +31,7 @@ const copyFile = () => {
   
         resolve({
           ok: true,
-          message: 'Stylesheet created!'
+          message: 'Stylesheet has been created!'
         });
       });
     });

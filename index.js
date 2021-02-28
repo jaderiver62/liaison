@@ -74,7 +74,7 @@ const questions = [{
             else{ 
                 console.log("Please enter 10 or more numbers and do not enter any non numerical characters.");
                 return false;}
-            // I check that the input is long enough and is actually just numbers, if it isn't it won't accept input
+            // I check that the input is long enough and is actually just numbers, if it isn't it won't accept input and let's user know
         }
     },
     {
@@ -83,7 +83,7 @@ const questions = [{
         message: 'Enter an email for the Manager: ',
         validate: emailInput => {
             if (validator.validate(emailInput)) {
-
+// using the email-validator package
                 return true;
             } else {
                 console.log('Please enter a valid contact e-mail!');
@@ -101,6 +101,7 @@ const questions = [{
             message: "Would you like to add an Engineer or an Intern? ",
             choices: ["Engineer", "Intern"]
         },
+        // using the inquirer-loop package to repeatedly ask what type of emplyee the user would like to add
         {
             type: 'input',
             name: 'employeeName',
@@ -142,6 +143,7 @@ const questions = [{
             name: "engineerGitHub",
             message: "What is the engineer's GitHub username? ",
             when: ({employeeType})=> employeeType === "Engineer",
+            // I an using inquirer - 'when' to ask different questions based on the type of object we will be constructing
         },
         {
             type: "input",
@@ -158,6 +160,7 @@ function isNumeric(string) {
     return !isNaN(string) &&
         !isNaN(parseFloat(string))
 }
+// A helper function to ensure that the string is only numeric characters
 
 function inititialize() {
     inquirer.prompt(questions).then((answers) => {
@@ -176,4 +179,5 @@ function inititialize() {
         console.log(err);
       });
 }
+// This code handles the responces from inquirer and then directs the data the template to generate the page and writes/copies the files
 inititialize();
