@@ -103,11 +103,26 @@ module.exports = templateData => {
 	console.log(templateData);
 	generateManager();
 	function generateManager(){
-
-		manager = new Manager(templateData.managerName, templateData.managerEmail, templateData.managerId, templateData.managerNumber);
+		let number = formatNumber(templateData.managerNumber);
+		manager = new Manager(templateData.managerName, templateData.managerEmail, templateData.managerId, number);
 		
 	}
-
+	function formatNumber(phoneNumber){
+		//Filter only numbers from the input
+		let result = ('' + phoneNumber).replace(/\D/g, '');
+		
+		//Check if the input is of correct
+		let match = result.match(/^(1|)?(\d{3})(\d{3})(\d{4})$/);
+		
+		if (match) {
+		  //Remove the matched extension code
+		  //Change this to format for any country code.
+		  let internationalCode = (match[1] ? '+1 ' : '')
+		  return [internationalCode, '(', match[2], ') ', match[3], '-', match[4]].join('')
+		}
+		
+		return null;
+	  }
 	return `<!DOCTYPE html>
 		<html lang="en">
 	
