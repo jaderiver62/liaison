@@ -1,4 +1,16 @@
 module.exports = templateData => {
+	const Manager = require('../lib/Manager');
+	const Engineer = require('../lib/Engineer');
+	const Intern = require('../lib/Intern');
+
+	let manager;
+
+	function generateManager(){
+		manager = new Manager(templateData.managerName, templateData.managerEmail, templateData.managerId, templateData.managerNumber);
+	}
+	// small functions for each type of employee object and push into an array that is filter - map with the manager use template literal
+	//instead of looping through for each employee do it specifically for each type of object
+
 	const generateEmployees = (employeeArray) => {
 		let result = ``;
 		if (employeeArray) {
@@ -8,8 +20,10 @@ module.exports = templateData => {
 					  <div class="column is-one-quarter">
 			<div class="card">
 				<header class="card-header">
-					  <p class="card-header-title font-color is-centered">
-					  ${employeeArray[i].employeeName}&nbsp;&nbsp;&nbsp;&nbsp;
+				<div class="media-content">
+				<p class="title is-4">
+					  ${employeeArray[i].employeeName}</p>
+					  <p class="subtitle is-6">
 						`;
 				if (employeeArray[i].employeeType === "Engineer") {
 					result += `
@@ -23,8 +37,9 @@ module.exports = templateData => {
 					`;
 				}
 				result += `
-					</p>
-					</header>
+				</p>
+				</div>
+			</header>
 					<div class="card-content custom-padding">
 						  <div class="content">
 						  <ul style="list-style-type:none; margin: 32px;">
@@ -73,7 +88,7 @@ module.exports = templateData => {
 	}
 
 	console.log(templateData);
-
+	generateManager();
 
 	return `<!DOCTYPE html>
 		<html lang="en">
@@ -103,39 +118,40 @@ module.exports = templateData => {
 			  </section>
 	  </header>
 	  <main class="container">
-	  <div class="columns is-mobile is-multiline">
+	  <div class="columns is-mobile is-multiline is-centered">
 		  <div class="column is-one-quarter">
 			  <div class="card">
 				  <header class="card-header">
-						<p class="card-header-title font-color is-centered">
-						${templateData.managerName}&nbsp;&nbsp;&nbsp;&nbsp;  
-						<i class="fas fa-lightbulb"></i>
-						  &nbsp;&nbsp;&nbsp;&nbsp;Manager
-	
-					  </p>
-					  </header>
-					  <div class="card-content custom-padding">
-							<div class="content">
+				  	<div class="media-content">
+				  		<p class="title is-4">
+							${manager.getName()}</p>
+							<p class="subtitle is-6"><i class="fas fa-lightbulb"></i>
+								&nbsp;&nbsp;&nbsp;&nbsp;Manager
+							</p>
+						</div>
+					</header>
+					<div class="card-content custom-padding">
+						<div class="content">
 							<ul style="list-style-type:none; margin: 32px;">
-								  <div class="list-item">
-									  <li>
+								<div class="list-item">
+								  <li>
 										  ID:
 										  &nbsp;&nbsp;&nbsp;&nbsp;
-										  ${templateData.managerId}
-									  </li>
-								  </div>
-								  <div class="list-item">
-									  <li>
-										E-mail:
+										  ${manager.getId()}
+								  </li>
+								</div>
+								<div class="list-item">
+								  <li>
+										  E-mail:
 										  &nbsp;&nbsp;&nbsp;&nbsp;
-										  <a href="mailto: ${templateData.managerEmail}"> ${templateData.managerEmail}</a>
+										  <a href="mailto: ${manager.getEmail()}"> ${manager.getEmail()}</a>
 									  </li>
 								  </div>
 								  <div class="list-item">
 									  <li>
 									  Phone Number:
 									  &nbsp;&nbsp;&nbsp;&nbsp;
-									  ${templateData.managerNumber}
+									  ${manager.getOfficeNumber()}
 									  </li>
 								  </div>
 							  </ul>

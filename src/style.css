@@ -7,8 +7,9 @@ header{
     background-color: rgb(53, 74, 141);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-.font-color {
+.title, .subtitle {
     color: whitesmoke;
+    text-align: center;
 }
 .custom-shadow{
      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
