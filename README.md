@@ -1,11 +1,13 @@
 
 # liaison
-<a href='https://opensource.org/licenses/MIT'><img src='https://img.shields.io/badge/license-MIT-blueviolet' alt='license badge'></a>
+<a href='LICENSE'><img src='https://img.shields.io/badge/license-MIT-blueviolet' alt='license badge'></a>
 
 ---------------------------------------
 
 ## Description
 This app generates a Team Dashboard using the command line for easy access to team information
+
+
 
 ![App Image](lib/images/scrnshot1.png)
 
